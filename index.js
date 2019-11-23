@@ -1,11 +1,5 @@
-const Server = require('./API/Server');
+const container = require('./api/container');
+const application = container.resolve('app');
+const db = container.resolve('db');
 
-const config = {
-  puerto: 5000,
-  database: {
-    localhost: 'localhost'
-  }
-};
-
-const servidor = new Server(config);
-servidor.servidor();
+application.start().then(console.log('STARTING API'));

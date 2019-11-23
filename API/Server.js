@@ -7,8 +7,7 @@ class Server {
     this.express.use(router);
   }
 
-  servidor() {
-    const puerto = this.puerto;
+  start() {
     const http = this.express.listen(8000, () => {
       console.log('application listen on port: ' + http.address().port);
     });
