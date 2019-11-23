@@ -1,19 +1,15 @@
 const express = require('express');
 
 class Server {
-  constructor({ config, router }) {
-    this.config = config;
-    this.express = express;
-    this.express.use(router);
+  constructor({ puerto }) {
+    this.puerto = puerto;
+    this.express = express();
   }
 
-  start() {
-    return new Promise((resolve, reject) => {
-      const http = this._express.listen(this._config.PORT, () => {
-        const { port } = http.address();
-        console.log('Application running on port ' + port);
-        resolve();
-      });
+  servidor() {
+    const puerto = this.puerto;
+    const http = this.express.listen(8000, () => {
+      console.log('application listen on port: ' + http.address().port);
     });
   }
 }
