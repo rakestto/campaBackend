@@ -1,9 +1,10 @@
 const express = require('express');
 
 class Server {
-  constructor({ puerto }) {
-    this.puerto = puerto;
+  constructor({ config, router }) {
+    this.config = config;
     this.express = express();
+    this.express.use(router);
   }
 
   servidor() {
