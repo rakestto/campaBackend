@@ -17,6 +17,15 @@ const FacturaRoutes = require('./Routes/Factura.routes');
 //Controladores
 const VehiculoController = require('./Controllers/Vehiculo.controller');
 
+//Servicios
+const VehiculoService = require('../Services/Vehiculo.service');
+
+//Logica de negocio
+const VehiculoBussines = require('../Domain');
+
+//Repositorios
+const VehiculoRepository = require('../Data/repositories/Vehiculo.repository');
+
 Container.register({
   app: asClass(Server).singleton(),
   config: asValue(config),
@@ -33,6 +42,18 @@ Container.register({
   .register({
     //CONTROLADORES
     VehiculoController: asFunction(VehiculoController).singleton()
+  })
+  .register({
+    //SERVICIOS
+    VehiculoService: asClass(VehiculoService).singleton()
+  })
+  .register({
+    //LOGICA NEGOCIO
+    VehiculoBussines: asClass(VehiculoBussines).singleton()
+  })
+  .register({
+    //REPOSITORIO
+    VehiculoRepository: asClass(VehiculoRepository).singleton()
   });
 
 module.exports = Container;
