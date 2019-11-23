@@ -1,9 +1,9 @@
-class VehiculoService {
+const BaseService = require('./Base.service');
+
+class VehiculoService extends BaseService {
   constructor({ VehiculoBussines }) {
     this.VehiculoBussines = VehiculoBussines;
   }
-
-  getVehiculos = async () => {
-    const vehiculos = await this.VehiculoRepository;
-  };
 }
+
+module.exports = VehiculoService;

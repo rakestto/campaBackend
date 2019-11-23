@@ -1,5 +1,8 @@
-class VehiculoBussines extends {
+const BaseBussines = require('./Base.bussines');
+
+class VehiculoBussines extends BaseBussines {
   constructor({ VehiculoRepository }) {
-    this.VehiculoRepository = VehiculoRepository;
+    super(VehiculoRepository);
   }
 }
+module.exports = VehiculoBussines;

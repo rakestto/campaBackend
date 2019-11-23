@@ -26,3 +26,5 @@ class BaseRepository {
     return this._db[this.entity].destroy({ where: { id } });
   }
 }
+
+module.exports = BaseRepository;
