@@ -4,7 +4,7 @@ const cors = require('cors');
 const compression = require('compression');
 const morgan = require('morgan');
 
-module.exports = ({ VehiculoRoutes, ClienteRoutes }) => {
+module.exports = ({ VehiculoRoutes, ClienteRoutes, FacturaRoutes }) => {
   const router = Router();
   const apiRoute = Router();
 
@@ -16,6 +16,7 @@ module.exports = ({ VehiculoRoutes, ClienteRoutes }) => {
 
   apiRoute.use('/vehiculos', VehiculoRoutes);
   apiRoute.use('/cliente', ClienteRoutes);
+  apiRoute.use('/factura', FacturaRoutes);
   router.use('/api', apiRoute);
 
   return router;
