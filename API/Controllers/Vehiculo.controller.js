@@ -5,7 +5,9 @@ class VehiculoController {
 
   async getVehiculos(req, res) {
     const vehiculos = await this.VehiculoService.getAll();
-    if (!vehiculos) return null;
+    if (!vehiculos) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: vehiculos
     });
@@ -14,17 +16,22 @@ class VehiculoController {
   async getVehiculo(req, res) {
     const { id } = req.params;
     const vehiculo = await this.VehiculoService.get(id);
-    if (!vehiculo) return null;
-    return res.send({
-      data: vehiculo
-    });
+    if (!vehiculo) {
+      return res.sendStatus(404);
+    } else {
+      return res.send({
+        data: vehiculo
+      });
+    }
   }
 
   async createVehiculo(req, res) {
     const { body } = req;
     console.log(body);
     const vehiculoCreado = await this.VehiculoService.create(body);
-    if (!vehiculoCreado) return null;
+    if (!vehiculoCreado) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: vehiculoCreado
     });
@@ -33,7 +40,9 @@ class VehiculoController {
     const { body } = req;
     const { id } = req.params;
     const updatedVehiculo = await this.VehiculoService.update(id, body);
-    if (!updatedVehiculo) return null;
+    if (!updatedVehiculo) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: updatedVehiculo
     });

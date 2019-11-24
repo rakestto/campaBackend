@@ -13,16 +13,15 @@ class ClienteController {
   async getCliente(req, res) {
     const { id } = req.params;
     const clientes = await this.clienteService.get(id);
-    if (!clientes) return null;
-    return res.send({
-      data: clientes
-    });
+    return clientes ? res.send({ data: clientes }) : res.sendStatus(404);
   }
 
   async createCliente(req, res) {
     const { body } = req;
     const clienteCreado = await this.clienteService.create(body);
-    if (!clienteCreado) return null;
+    if (!clienteCreado) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: clienteCreado
     });
@@ -32,7 +31,9 @@ class ClienteController {
     const { body } = req;
     const { id } = req.params;
     const updatedcliente = await this.clienteService.update(id, body);
-    if (!updatedcliente) return null;
+    if (!updatedcliente) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: updatedcliente
     });
@@ -41,7 +42,9 @@ class ClienteController {
   async deleteCliente(req, res) {
     const { id } = req.params;
     const deletedcliente = await this.clienteService.delete(id);
-    if (!deletedcliente) return null;
+    if (!deletedcliente) {
+      return res.sendStatus(404);
+    }
     return res.send({
       data: deletedcliente
     });
