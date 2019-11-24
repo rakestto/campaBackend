@@ -7,7 +7,7 @@ class VehiculoController {
     const vehiculos = await this.VehiculoService.getAll();
     if (!vehiculos) return null;
     return res.send({
-      payload: vehiculos
+      data: vehiculos
     });
   }
 
@@ -16,17 +16,35 @@ class VehiculoController {
     const vehiculo = await this.VehiculoService.get(id);
     if (!vehiculo) return null;
     return res.send({
-      payload: vehiculo
+      data: vehiculo
     });
   }
 
   async createVehiculo(req, res) {
     const { body } = req;
-    // console.log(body);
+    console.log(body);
     const vehiculoCreado = await this.VehiculoService.create(body);
     if (!vehiculoCreado) return null;
     return res.send({
-      payload: vehiculoCreado
+      data: vehiculoCreado
+    });
+  }
+  async updateVehiculo(req, res) {
+    const { body } = req;
+    const { id } = req.params;
+    const updatedVehiculo = await this.VehiculoService.update(id, body);
+    if (!updatedVehiculo) return null;
+    return res.send({
+      data: updatedVehiculo
+    });
+  }
+
+  async deleteVehiculo(req, res) {
+    const { id } = req.params;
+    const deletedVehiculo = await this.VehiculoService.delete(id);
+    if (!deletedVehiculo) return null;
+    return res.send({
+      data: deletedVehiculo
     });
   }
 }

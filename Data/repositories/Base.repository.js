@@ -14,18 +14,18 @@ class BaseRepository {
 
   create(entity) {
     console.log({ entity });
-    const created = this._db[this.entity].create(entity);
+    const created = this.db[this.entity].create(entity);
     return created;
   }
 
   update(id, entity) {
     delete entity.createdAt;
     delete entity.updatedAt;
-    return this._db[this.entity].update(entity, { where: { id } });
+    return this.db[this.entity].update(entity, { where: { id } });
   }
 
   delete(id) {
-    return this._db[this.entity].destroy({ where: { id } });
+    return this.db[this.entity].destroy({ where: { id } });
   }
 }
 
