@@ -4,7 +4,12 @@ const cors = require('cors');
 const compression = require('compression');
 const morgan = require('morgan');
 
-module.exports = ({ VehiculoRoutes, ClienteRoutes, FacturaRoutes }) => {
+module.exports = ({
+  VehiculoRoutes,
+  ClienteRoutes,
+  FacturaRoutes,
+  VehiculoClienteRoutes
+}) => {
   const router = Router();
   const apiRoute = Router();
 
@@ -14,7 +19,8 @@ module.exports = ({ VehiculoRoutes, ClienteRoutes, FacturaRoutes }) => {
     .use(compression())
     .use(morgan('tiny'));
 
-  apiRoute.use('/vehiculos', VehiculoRoutes);
+  apiRoute.use('/vehiculo', VehiculoRoutes);
+  apiRoute.use('/vehiculoCliente', VehiculoClienteRoutes);
   apiRoute.use('/cliente', ClienteRoutes);
   apiRoute.use('/factura', FacturaRoutes);
   router.use('/api', apiRoute);
