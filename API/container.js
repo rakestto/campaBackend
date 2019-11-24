@@ -9,22 +9,22 @@ const db = require('../Data/models/index');
 //Rutas
 const router = require('./Routes/index');
 const VehiculoRoutes = require('./Routes/Vehiculo.routes');
-const VehiculoClientesRoutes = require('./Routes/VehiculoClientes.routes');
-const ClientesRoutes = require('./Routes/Cliente.routes');
-const InteresRoutes = require('./Routes/Interes.routes');
-const FacturaRoutes = require('./Routes/Factura.routes');
+const ClienteRoutes = require('./Routes/Cliente.routes');
 
 //Controladores
 const VehiculoController = require('./Controllers/Vehiculo.controller');
+const ClienteController = require('./Controllers/Cliente.controller');
 
 //Servicios SERVICES LAYER
 const VehiculoService = require('../Services/Vehiculo.service');
+const ClienteService = require('../Services/Cliente.service');
 
 //Logica de negocio DOMAIN LAYER
 const VehiculoBussines = require('../Domain/Vehiculo.bussines');
-
+const ClienteBussines = require('../Domain/Cliente.bussines');
 //Repositorios DATA ACCESS LAYER
 const VehiculoRepository = require('../Data/repositories/Vehiculo.repository');
+const ClienteRepository = require('../Data/repositories/Cliente.repository');
 
 Container.register({
   app: asClass(Server).singleton(),
@@ -34,27 +34,28 @@ Container.register({
 })
   .register({
     //RUTAS
-    VehiculoRoutes: asFunction(VehiculoRoutes).singleton()
-    // VehiculoClientesRoutes: asFunction(VehiculoClientesRoutes).singleton(),
-    // ClientesRoutes: asFunction(ClientesRoutes).singleton(),
-    // InteresRoutes: asFunction(InteresRoutes).singleton(),
-    // FacturaRoutes: asFunction(FacturaRoutes).singleton()
+    VehiculoRoutes: asFunction(VehiculoRoutes).singleton(),
+    ClienteRoutes: asFunction(ClienteRoutes).singleton()
   })
   .register({
     //CONTROLADORES
-    VehiculoController: asClass(VehiculoController).singleton()
+    VehiculoController: asClass(VehiculoController).singleton(),
+    ClienteController: asClass(ClienteController).singleton()
   })
   .register({
     //SERVICIOS
-    VehiculoService: asClass(VehiculoService).singleton()
+    VehiculoService: asClass(VehiculoService).singleton(),
+    ClienteService: asClass(ClienteService).singleton()
   })
   .register({
     //LOGICA NEGOCIO
-    VehiculoBussines: asClass(VehiculoBussines).singleton()
+    VehiculoBussines: asClass(VehiculoBussines).singleton(),
+    ClienteBussines: asClass(ClienteBussines).singleton()
   })
   .register({
     //REPOSITORIO
-    VehiculoRepository: asClass(VehiculoRepository).singleton()
+    VehiculoRepository: asClass(VehiculoRepository).singleton(),
+    ClienteRepository: asClass(ClienteRepository).singleton()
   });
 
 module.exports = Container;
