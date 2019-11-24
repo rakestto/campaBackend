@@ -1,19 +1,21 @@
 class BaseRepository {
-  constructor(entity, db) {
+  constructor(db, entity) {
     this.entity = entity;
     this.db = db;
   }
 
   getAll() {
-    return this.db[this.Entity].findAll();
+    return this.db[this.entity].findAll();
   }
 
   get(id) {
-    return this.db[this.Entity].findOne({ where: { id } });
+    return this.db[this.entity].findOne({ where: { id } });
   }
 
   create(entity) {
-    return this._db[this.entity].create(entity);
+    console.log({ entity });
+    const created = this._db[this.entity].create(entity);
+    return created;
   }
 
   update(id, entity) {

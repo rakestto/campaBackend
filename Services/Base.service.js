@@ -1,12 +1,12 @@
 class BaseService {
-  constructor({ EntityBussines }) {
-    super(EntityBussines);
+  constructor(EntityBussines) {
+    this.EntityBussines = EntityBussines;
   }
 
-  getAll = async () => {
+  async getAll() {
     const entities = await this.EntityBussines.getAll();
     return entities;
-  };
+  }
 
   async get(id) {
     const entity = await this.EntityBussines.get(id);

@@ -3,11 +3,11 @@ const Container = createContainer();
 
 //Servidor
 const Server = require('./Server');
-const router = require('./Routes');
 const config = require('../Config/config.json');
-const database = require('../Data/models/index');
+const db = require('../Data/models/index');
 
 //Rutas
+const router = require('./Routes/index');
 const VehiculoRoutes = require('./Routes/Vehiculo.routes');
 const VehiculoClientesRoutes = require('./Routes/VehiculoClientes.routes');
 const ClientesRoutes = require('./Routes/Cliente.routes');
@@ -17,19 +17,20 @@ const FacturaRoutes = require('./Routes/Factura.routes');
 //Controladores
 const VehiculoController = require('./Controllers/Vehiculo.controller');
 
-//Servicios
+//Servicios SERVICES LAYER
 const VehiculoService = require('../Services/Vehiculo.service');
 
-//Logica de negocio
-const VehiculoBussines = require('../Domain');
+//Logica de negocio DOMAIN LAYER
+const VehiculoBussines = require('../Domain/Vehiculo.bussines');
 
-//Repositorios
+//Repositorios DATA ACCESS LAYER
 const VehiculoRepository = require('../Data/repositories/Vehiculo.repository');
 
 Container.register({
   app: asClass(Server).singleton(),
+  router: asFunction(router).singleton(),
   config: asValue(config),
-  router: asFunction(router).singleton()
+  db: asValue(db)
 })
   .register({
     //RUTAS
@@ -41,7 +42,7 @@ Container.register({
   })
   .register({
     //CONTROLADORES
-    VehiculoController: asFunction(VehiculoController).singleton()
+    VehiculoController: asClass(VehiculoController).singleton()
   })
   .register({
     //SERVICIOS

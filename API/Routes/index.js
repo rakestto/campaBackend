@@ -2,27 +2,19 @@ const { Router } = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const compression = require('compression');
+const morgan = require('morgan');
 
-module.exports = ({
-  VehiculoRoutes
-  //   ClienteRoutes,
-  //   FacturaRoutes,
-  //   InteresRoutes,
-  //   VehiculoClienteRoutes
-}) => {
+module.exports = ({ VehiculoRoutes }) => {
   const router = Router();
   const apiRoute = Router();
 
   apiRoute
     .use(cors())
     .use(bodyParser.json())
-    .use(compression());
+    .use(compression())
+    .use(morgan('tiny'));
 
-  apiRoute.use('/vehiculo', VehiculoRoutes);
-  //   apiRoute.use('/cliente', VehiculoRoutes);
-  //   apiRoute.use('/factura', VehiculoRoutes);
-  //   apiRoute.use('/interes', VehiculoRoutes);
-  //   apiRoute.use('/vehiculocliente', VehiculoRoutes);
+  apiRoute.use('/vehiculos', VehiculoRoutes);
   router.use('/api', apiRoute);
 
   return router;
