@@ -5,6 +5,10 @@ module.exports = ({ FacturaController }) => {
 
   router.get('/', FacturaController.getFacturas.bind(FacturaController));
   router.get('/:id', FacturaController.getFactura.bind(FacturaController));
+  router.get(
+    '/cliente/:clienteId',
+    FacturaController.getFacturasCliente.bind(FacturaController)
+  );
   router.post('/', FacturaController.createFactura.bind(FacturaController));
   router.put('/:id', FacturaController.updateFactura.bind(FacturaController));
   router.delete(

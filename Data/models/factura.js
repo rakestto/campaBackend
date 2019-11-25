@@ -1,13 +1,26 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Factura = sequelize.define('Factura', {
-    cliente: DataTypes.STRING,
-    vehiculo: DataTypes.INTEGER,
-    precio: DataTypes.INTEGER,
-    fecha: DataTypes.DATE
-  }, {});
+  const Factura = sequelize.define(
+    'Factura',
+    {
+      cliente: DataTypes.STRING,
+      vehiculo: DataTypes.INTEGER,
+      precio: DataTypes.INTEGER,
+      fecha: DataTypes.DATE
+    },
+    {}
+  );
   Factura.associate = function(models) {
-    // associations can be defined here
+    //FACTURA - CLIENTE
+    Factura.belongsTo(models.Cliente, {
+      foreignKey: 'clienteId',
+      sourceKey: 'id'
+    });
+    //FACTURA - VEHICULO
+    Factura.hasMany(models.Vehiculo, {
+      foreignKey: 'facturaId',
+      sourceKey: 'id'
+    });
   };
   return Factura;
 };

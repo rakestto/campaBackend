@@ -8,6 +8,16 @@ class FacturaController {
     return facturas ? res.send({ data: facturas }) : res.sendStatus(404);
   }
 
+  async getFacturasCliente(req, res) {
+    const { clienteId } = req.params;
+    const facturasCliente = await this.FacturaService.getFacturasCliente(
+      clienteId
+    );
+    return facturasCliente
+      ? res.send({ data: facturasCliente })
+      : res.sendStatus(404);
+  }
+
   async getFactura(req, res) {
     const { id } = req.params;
     const factura = await this.FacturaService.get(id);

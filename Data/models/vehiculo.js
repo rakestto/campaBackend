@@ -18,9 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   Vehiculo.associate = function(models) {
+    //CLIENTE - VEHICULO => INTERÉS
     Vehiculo.belongsToMany(models.Cliente, {
       through: 'Interes',
-      foreignKey: 'VehiculoId'
+      foreignKey: 'vehiculoId'
+    });
+    //FACTURA - VEHICULO
+    Vehiculo.belongsTo(models.Factura, {
+      foreignKey: 'facturaId',
+      sourceKey: 'id'
     });
   };
   return Vehiculo;

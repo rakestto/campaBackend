@@ -5,11 +5,11 @@ module.exports = {
       id: {
         allowNull: false,
         autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.INTEGER
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        primaryKey: true
       },
       nombre: {
         type: Sequelize.STRING
