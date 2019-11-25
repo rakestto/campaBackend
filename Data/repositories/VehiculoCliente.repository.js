@@ -2,7 +2,7 @@ const BaseRepository = require('./Base.repository');
 
 class VehiculoClienteRepository extends BaseRepository {
   constructor({ db }) {
-    super(db, 'VehiculoClienteRepository');
+    super(db, 'VehiculoCliente');
   }
 }
 

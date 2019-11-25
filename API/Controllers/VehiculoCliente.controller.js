@@ -3,7 +3,7 @@ class VehiculoClienteController {
     this.VehiculoClienteService = VehiculoClienteService;
   }
 
-  async getVehiculoCliente(req, res) {
+  async getVehiculosCliente(req, res) {
     const vehiculoCliente = await this.VehiculoClienteService.getAll();
     return vehiculoCliente
       ? res.send({ data: vehiculoCliente })

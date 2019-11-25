@@ -5,7 +5,9 @@ module.exports = ({ VehiculoClienteController }) => {
 
   router.get(
     '/',
-    VehiculoClienteController.getVehiculoCliente.bind(VehiculoClienteController)
+    VehiculoClienteController.getVehiculosCliente.bind(
+      VehiculoClienteController
+    )
   );
   router.get(
     '/:id',
