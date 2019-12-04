@@ -1,9 +1,18 @@
 const BaseBussines = require("./Base.bussines");
 
 class VehiculoBussines extends BaseBussines {
-  constructor({ VehiculoRepository }) {
+  constructor({ VehiculoRepository, ImagenesRepository }) {
     super(VehiculoRepository);
     this.VehiculoRepository = VehiculoRepository;
+    this.ImagenesRepository = ImagenesRepository;
+  }
+
+  async getVehiculoConImagenes(idVehiculo) {
+    const vehiculo = await this.VehiculoRepository.get(idVehiculo);
+    const imagenes = await this.ImagenesRepository.getImagenesVehiculo(
+      idVehiculo
+    );
+    return { vehiculo, imagenes };
   }
 
   async createVehiculo(vehiculo) {

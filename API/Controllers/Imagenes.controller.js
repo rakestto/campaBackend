@@ -11,8 +11,8 @@ class ImagenController {
   }
 
   async getImagenesId(req, res) {
-    const { id } = req.params;
-    const Imagenes = await this.ImagenService.getAll(id);
+    const { vehiculo } = req.params;
+    const Imagenes = await this.ImagenService.getAll(vehiculo);
     return Imagenes ? res.send({ data: Imagenes }) : res.sendStatus(404);
   }
 

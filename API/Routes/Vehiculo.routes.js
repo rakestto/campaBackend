@@ -19,6 +19,10 @@ module.exports = ({ VehiculoController }) => {
 
   router.get("/", VehiculoController.getVehiculos.bind(VehiculoController));
   router.get("/:id", VehiculoController.getVehiculo.bind(VehiculoController));
+  router.get(
+    "/detalle/:id",
+    VehiculoController.getVehiculoConImagenes.bind(VehiculoController)
+  );
   router.post(
     "/",
     upload,

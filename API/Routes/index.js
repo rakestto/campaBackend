@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const compression = require("compression");
 const morgan = require("morgan");
-const path = require("path");
 
 module.exports = ({
   VehiculoRoutes,

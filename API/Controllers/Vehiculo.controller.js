@@ -13,6 +13,20 @@ class VehiculoController {
     });
   }
 
+  async getVehiculoConImagenes(req, res) {
+    const { id } = req.params;
+    const vehiculoImagenes = await this.VehiculoService.getVehiculoConImagenes(
+      id
+    );
+    if (vehiculoImagenes) {
+      return res.send({
+        data: vehiculoImagenes
+      });
+    } else {
+      res.sendStatus(404);
+    }
+  }
+
   async getVehiculo(req, res) {
     const { id } = req.params;
     const vehiculo = await this.VehiculoService.get(id);
