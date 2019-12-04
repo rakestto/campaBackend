@@ -1,14 +1,13 @@
 const express = require("express");
-const path = require("path");
+const dir = require("../public/uploads/dir");
 
 class Server {
   constructor({ config, router }) {
+    const directorioImagenes = __dirname + "/../../public/uploads";
     this.config = config;
     this.express = express();
     this.express.use(router);
-    this.express.use(
-      express.static(path.join(__dirname, "../../public/uploads"))
-    );
+    this.express.use("/api/imagenes", express.static(dir));
   }
 
   start() {
