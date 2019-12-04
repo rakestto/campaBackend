@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const Vehiculo = sequelize.define(
-    'Vehiculo',
+    "Vehiculo",
     {
       matricula: DataTypes.STRING,
       marca: DataTypes.STRING,
@@ -13,20 +13,21 @@ module.exports = (sequelize, DataTypes) => {
       alto: DataTypes.DOUBLE,
       tipoeje: DataTypes.STRING,
       tiporueda: DataTypes.STRING,
-      tipofreno: DataTypes.STRING
+      tipofreno: DataTypes.STRING,
+      imagen: DataTypes.STRING
     },
     {}
   );
   Vehiculo.associate = function(models) {
     //CLIENTE - VEHICULO => INTERÉS
     Vehiculo.belongsToMany(models.Cliente, {
-      through: 'Interes',
-      foreignKey: 'vehiculoId'
+      through: "Interes",
+      foreignKey: "vehiculoId"
     });
     //FACTURA - VEHICULO
     Vehiculo.belongsTo(models.Factura, {
-      foreignKey: 'facturaId',
-      sourceKey: 'id'
+      foreignKey: "facturaId",
+      sourceKey: "id"
     });
   };
   return Vehiculo;
