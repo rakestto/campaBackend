@@ -13,6 +13,20 @@ class VehiculoController {
     });
   }
 
+  async getVehiculoConImagenes(req, res) {
+    const { id } = req.params;
+    const vehiculoImagenes = await this.VehiculoService.getVehiculoConImagenes(
+      id
+    );
+    if (vehiculoImagenes) {
+      return res.send({
+        data: vehiculoImagenes
+      });
+    } else {
+      res.sendStatus(404);
+    }
+  }
+
   async getVehiculo(req, res) {
     const { id } = req.params;
     const vehiculo = await this.VehiculoService.get(id);
@@ -27,9 +41,13 @@ class VehiculoController {
 
   async createVehiculo(req, res) {
     const { body } = req;
-    console.log(body);
-    const vehiculoCreado = await this.VehiculoService.create(body);
-    if (!vehiculoCreado) {
+    const imagen = req.files[0].filename;
+    const vehiculoCreado = await this.VehiculoService.createVehiculo(
+      body,
+      imagen,
+      req
+    );
+    if (!vehiculoCreado.vehiculo || !vehiculoCreado.galeria) {
       return res.sendStatus(404);
     }
     return res.send({
