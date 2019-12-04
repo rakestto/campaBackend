@@ -27,7 +27,7 @@ class VehiculoController {
 
   async createVehiculo(req, res) {
     const { body } = req;
-    const imagen = req.files[0].path;
+    const imagen = req.files[0].filename;
     const vehiculoCreado = await this.VehiculoService.createVehiculo(
       body,
       imagen,

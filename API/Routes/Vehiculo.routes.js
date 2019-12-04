@@ -13,6 +13,7 @@ const upload = multer({
   storage,
   dest: path.join(__dirname, "../../public/uploads")
 }).array("imagenes", 10);
+
 module.exports = ({ VehiculoController }) => {
   const router = Router();
 

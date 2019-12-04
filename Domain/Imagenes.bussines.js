@@ -10,7 +10,7 @@ class ImagenesBussines extends BaseBussines {
     if (Object.entries(imagenes).length > 0) {
       const galeria = imagenes.map(img => ({
         vehiculo: idVehiculo,
-        image: img.path
+        image: img.filename
       }));
 
       const galery = await this.ImagenesRepository.createGalery(galeria);
