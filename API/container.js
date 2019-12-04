@@ -12,30 +12,34 @@ const VehiculoRoutes = require('./Routes/Vehiculo.routes');
 const ClienteRoutes = require('./Routes/Cliente.routes');
 const FacturaRoutes = require('./Routes/Factura.routes');
 const VehiculoClienteRoutes = require('./Routes/VehiculoClientes.routes');
+const InteresRoutes = require('./Routes/Interes.routes');
 
 //Controladores
 const VehiculoController = require('./Controllers/Vehiculo.controller');
 const ClienteController = require('./Controllers/Cliente.controller');
 const FacturaController = require('./Controllers/Factura.controller');
 const VehiculoClienteController = require('./Controllers/VehiculoCliente.controller');
-
+const InteresController = require('./Controllers/Interes.controller');
 //Servicios SERVICES LAYER
 const VehiculoService = require('../Services/Vehiculo.service');
 const ClienteService = require('../Services/Cliente.service');
 const FacturaService = require('../Services/Factura.service');
 const VehiculoClienteService = require('../Services/VehiculoCliente.service');
+const InteresService = require('../Services/Interes.service');
 
 //Logica de negocio DOMAIN LAYER
 const VehiculoBussines = require('../Domain/Vehiculo.bussines');
 const ClienteBussines = require('../Domain/Cliente.bussines');
 const FacturaBussines = require('../Domain/Factura.bussines');
 const VehiculoClienteBussines = require('../Domain/VehiculoCliente.bussines');
+const InteresBussines = require('../Domain/Interes.bussines');
 
 //Repositorios DATA ACCESS LAYER
 const VehiculoRepository = require('../Data/repositories/Vehiculo.repository');
 const ClienteRepository = require('../Data/repositories/Cliente.repository');
 const FacturaRepository = require('../Data/repositories/Factura.repository');
 const VehiculoClienteRepository = require('../Data/repositories/VehiculoCliente.repository');
+const InteresRepository = require('../Data/repositories/Interes.repository');
 
 Container.register({
   app: asClass(Server).singleton(),
@@ -48,35 +52,40 @@ Container.register({
     VehiculoRoutes: asFunction(VehiculoRoutes).singleton(),
     ClienteRoutes: asFunction(ClienteRoutes).singleton(),
     FacturaRoutes: asFunction(FacturaRoutes).singleton(),
-    VehiculoClienteRoutes: asFunction(VehiculoClienteRoutes).singleton()
+    VehiculoClienteRoutes: asFunction(VehiculoClienteRoutes).singleton(),
+    InteresRoutes: asFunction(InteresRoutes).singleton()
   })
   .register({
     //CONTROLADORES
     VehiculoController: asClass(VehiculoController).singleton(),
     ClienteController: asClass(ClienteController).singleton(),
     FacturaController: asClass(FacturaController).singleton(),
-    VehiculoClienteController: asClass(VehiculoClienteController).singleton()
+    VehiculoClienteController: asClass(VehiculoClienteController),
+    InteresController: asClass(InteresController).singleton()
   })
   .register({
     //SERVICIOS
     VehiculoService: asClass(VehiculoService).singleton(),
     ClienteService: asClass(ClienteService).singleton(),
     FacturaService: asClass(FacturaService).singleton(),
-    VehiculoClienteService: asClass(VehiculoClienteService).singleton()
+    VehiculoClienteService: asClass(VehiculoClienteService).singleton(),
+    InteresService: asClass(InteresService).singleton()
   })
   .register({
     //LOGICA NEGOCIO
     VehiculoBussines: asClass(VehiculoBussines).singleton(),
     ClienteBussines: asClass(ClienteBussines).singleton(),
     FacturaBussines: asClass(FacturaBussines).singleton(),
-    VehiculoClienteBussines: asClass(VehiculoClienteBussines).singleton()
+    VehiculoClienteBussines: asClass(VehiculoClienteBussines).singleton(),
+    InteresBussines: asClass(InteresBussines).singleton()
   })
   .register({
     //REPOSITORIO
     VehiculoRepository: asClass(VehiculoRepository).singleton(),
     ClienteRepository: asClass(ClienteRepository).singleton(),
     FacturaRepository: asClass(FacturaRepository).singleton(),
-    VehiculoClienteRepository: asClass(VehiculoClienteRepository).singleton()
+    VehiculoClienteRepository: asClass(VehiculoClienteRepository).singleton(),
+    InteresRepository: asClass(InteresRepository).singleton()
   });
 
 module.exports = Container;

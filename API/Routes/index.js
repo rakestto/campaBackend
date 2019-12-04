@@ -8,7 +8,8 @@ module.exports = ({
   VehiculoRoutes,
   ClienteRoutes,
   FacturaRoutes,
-  VehiculoClienteRoutes
+  VehiculoClienteRoutes,
+  InteresRoutes
 }) => {
   const router = Router();
   const apiRoute = Router();
@@ -23,6 +24,7 @@ module.exports = ({
   apiRoute.use('/vehiculoCliente', VehiculoClienteRoutes);
   apiRoute.use('/cliente', ClienteRoutes);
   apiRoute.use('/factura', FacturaRoutes);
+  apiRoute.use('/interes', InteresRoutes);
   router.use('/api', apiRoute);
 
   return router;

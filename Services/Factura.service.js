@@ -1,13 +1,13 @@
 const BaseService = require('./Base.service');
 
 class FacturaService extends BaseService {
-  constructor({ FacturaBussines, FacturaRepository }) {
+  constructor({ FacturaBussines }) {
     super(FacturaBussines);
-    this.FacturaRepository = FacturaRepository;
+    this.FacturaBussines = FacturaBussines;
   }
 
   async getFacturasCliente(clienteId) {
-    const facturasCliente = await this.FacturaRepository.getFacturasCliente(
+    const facturasCliente = await this.FacturaBussines.getFacturasCliente(
       clienteId
     );
     return facturasCliente;
