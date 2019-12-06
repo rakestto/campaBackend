@@ -18,20 +18,30 @@ module.exports = ({ VehiculoController }) => {
   const router = Router();
 
   router.get("/", VehiculoController.getVehiculos.bind(VehiculoController));
-  router.get("/:id", VehiculoController.getVehiculo.bind(VehiculoController));
+
   router.get(
-    "/detalle/:id",
+    "/busqueda",
+    VehiculoController.getVehiculoFiltrado.bind(VehiculoController)
+  );
+
+  router.get("/:id", VehiculoController.getVehiculo.bind(VehiculoController));
+
+  router.get(
+    "/detalle",
     VehiculoController.getVehiculoConImagenes.bind(VehiculoController)
   );
+
   router.post(
     "/",
     upload,
     VehiculoController.createVehiculo.bind(VehiculoController)
   );
+
   router.put(
     "/:id",
     VehiculoController.updateVehiculo.bind(VehiculoController)
   );
+
   router.delete(
     "/:id",
     VehiculoController.deleteVehiculo.bind(VehiculoController)

@@ -7,6 +7,11 @@ class VehiculoBussines extends BaseBussines {
     this.ImagenesRepository = ImagenesRepository;
   }
 
+  async getVehiculoFiltrado(body) {
+    const vehiculos = await this.VehiculoRepository.getVehiculoFiltrado(body);
+    return vehiculos ? vehiculos : null;
+  }
+
   async getVehiculoConImagenes(idVehiculo) {
     const vehiculo = await this.VehiculoRepository.get(idVehiculo);
     const imagenes = await this.ImagenesRepository.getImagenesVehiculo(

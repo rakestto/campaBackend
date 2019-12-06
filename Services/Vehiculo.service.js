@@ -7,6 +7,11 @@ class VehiculoService extends BaseService {
     this.ImagenesBussines = ImagenesBussines;
   }
 
+  async getVehiculoFiltrado(body) {
+    const vehiculos = await this.VehiculoBussines.getVehiculoFiltrado(body);
+    return vehiculos;
+  }
+
   async getVehiculoConImagenes(idVehiculo) {
     const vehiculoImagenes = await this.VehiculoBussines.getVehiculoConImagenes(
       idVehiculo
