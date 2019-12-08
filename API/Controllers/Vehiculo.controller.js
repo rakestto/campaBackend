@@ -9,7 +9,7 @@ class VehiculoController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: vehiculos
+      vehiculos
     });
   }
 
@@ -19,7 +19,7 @@ class VehiculoController {
     const vehiculos = await this.VehiculoService.getVehiculoFiltrado(body);
     if (vehiculos) {
       return res.send({
-        data: vehiculos
+        vehiculos
       });
     } else {
       return res.sendStatus(404);
@@ -33,7 +33,7 @@ class VehiculoController {
     );
     if (vehiculoImagenes) {
       return res.send({
-        data: vehiculoImagenes
+        vehiculoImagenes
       });
     } else {
       res.sendStatus(404);
@@ -47,7 +47,7 @@ class VehiculoController {
       return res.sendStatus(404);
     } else {
       return res.send({
-        data: vehiculo
+        vehiculo
       });
     }
   }
@@ -64,7 +64,7 @@ class VehiculoController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: vehiculoCreado
+      vehiculoCreado
     });
   }
   async updateVehiculo(req, res) {
@@ -75,7 +75,7 @@ class VehiculoController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: updatedVehiculo
+      updatedVehiculo
     });
   }
 
@@ -84,7 +84,7 @@ class VehiculoController {
     const deletedVehiculo = await this.VehiculoService.delete(id);
     if (!deletedVehiculo) return null;
     return res.send({
-      data: deletedVehiculo
+      deletedVehiculo
     });
   }
 }

@@ -6,14 +6,14 @@ class ClienteController {
   async getClientes(req, res) {
     const clientes = await this.clienteService.getAll();
     return res.send({
-      data: clientes
+      clientes
     });
   }
 
   async getCliente(req, res) {
     const { id } = req.params;
     const clientes = await this.clienteService.get(id);
-    return clientes ? res.send({ data: clientes }) : res.sendStatus(404);
+    return clientes ? res.send({ clientes }) : res.sendStatus(404);
   }
 
   async createCliente(req, res) {
@@ -23,7 +23,7 @@ class ClienteController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: clienteCreado
+      clienteCreado
     });
   }
 
@@ -35,7 +35,7 @@ class ClienteController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: updatedcliente
+      updatedcliente
     });
   }
 
@@ -46,7 +46,7 @@ class ClienteController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: deletedcliente
+      deletedcliente
     });
   }
 }

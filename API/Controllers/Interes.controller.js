@@ -9,7 +9,7 @@ class InteresController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: Interess
+      Interess
     });
   }
 
@@ -20,7 +20,7 @@ class InteresController {
       return res.sendStatus(404);
     } else {
       return res.send({
-        data: Interes
+        Interes
       });
     }
   }
@@ -33,7 +33,7 @@ class InteresController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: InteresCreado
+      InteresCreado
     });
   }
   async updateInteres(req, res) {
@@ -44,7 +44,7 @@ class InteresController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: updatedInteres
+      updatedInteres
     });
   }
 
@@ -53,7 +53,7 @@ class InteresController {
     const deletedInteres = await this.InteresService.delete(id);
     if (!deletedInteres) return null;
     return res.send({
-      data: deletedInteres
+      deletedInteres
     });
   }
 }

@@ -6,7 +6,7 @@ class VehiculoClienteController {
   async getVehiculosCliente(req, res) {
     const vehiculoCliente = await this.VehiculoClienteService.getAll();
     return vehiculoCliente
-      ? res.send({ data: vehiculoCliente })
+      ? res.send({ vehiculoCliente })
       : res.sendStatus(404);
   }
 
@@ -14,14 +14,14 @@ class VehiculoClienteController {
     const { id } = req.params;
     const vehiculoCliente = await this.VehiculoClienteService.get(id);
     return vehiculoCliente
-      ? res.send({ data: vehiculoCliente })
+      ? res.send({ vehiculoCliente })
       : res.sendStatus(404);
   }
 
   async createVehiculoCliente(req, res) {
     const { body } = req;
     const vehiculoCliente = await this.VehiculoClienteService.create(body);
-    vehiculoCliente ? res.send({ data: vehiculoCliente }) : res.sendStatus(404);
+    vehiculoCliente ? res.send({ vehiculoCliente }) : res.sendStatus(404);
   }
 
   async updateVehiculoCliente(req, res) {
@@ -32,7 +32,7 @@ class VehiculoClienteController {
       body
     );
     updateVehiculoCliente
-      ? res.send({ data: updateVehiculoCliente })
+      ? res.send({ updateVehiculoCliente })
       : res.sendStatus(404);
   }
 
@@ -40,7 +40,7 @@ class VehiculoClienteController {
     const { id } = req.params;
     const deleteVehiculoCliente = await this.VehiculoClienteService.delete(id);
     deleteVehiculoCliente
-      ? res.send({ data: deleteVehiculoCliente })
+      ? res.send({ deleteVehiculoCliente })
       : res.sendStatus(404);
   }
 }

@@ -6,14 +6,14 @@ class ImagenController {
   async getImagenes(req, res) {
     const Imagenes = await this.ImagenService.getAll();
     return res.send({
-      data: Imagenes
+      Imagenes
     });
   }
 
   async getImagenesId(req, res) {
     const { vehiculo } = req.params;
     const Imagenes = await this.ImagenService.getAll(vehiculo);
-    return Imagenes ? res.send({ data: Imagenes }) : res.sendStatus(404);
+    return Imagenes ? res.send({ Imagenes }) : res.sendStatus(404);
   }
 
   async createImagen(req, res) {
@@ -23,7 +23,7 @@ class ImagenController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: ImagenCreada
+      ImagenCreada
     });
   }
 
@@ -35,7 +35,7 @@ class ImagenController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: updatedImagen
+      updatedImagen
     });
   }
 
@@ -46,7 +46,7 @@ class ImagenController {
       return res.sendStatus(404);
     }
     return res.send({
-      data: deletedImagen
+      deletedImagen
     });
   }
 }
