@@ -13,6 +13,7 @@ const ClienteRoutes = require("./Routes/Cliente.routes");
 const FacturaRoutes = require("./Routes/Factura.routes");
 const VehiculoClienteRoutes = require("./Routes/VehiculoClientes.routes");
 const InteresRoutes = require("./Routes/Interes.routes");
+const AdminRoutes = require("./Routes/Admin.routes");
 
 //Controladores
 const VehiculoController = require("./Controllers/Vehiculo.controller");
@@ -20,6 +21,7 @@ const ClienteController = require("./Controllers/Cliente.controller");
 const FacturaController = require("./Controllers/Factura.controller");
 const VehiculoClienteController = require("./Controllers/VehiculoCliente.controller");
 const InteresController = require("./Controllers/Interes.controller");
+const AdminController = require("./Controllers/Admin.controller");
 //Servicios SERVICES LAYER
 const VehiculoService = require("../Services/Vehiculo.service");
 const ClienteService = require("../Services/Cliente.service");
@@ -27,6 +29,7 @@ const FacturaService = require("../Services/Factura.service");
 const VehiculoClienteService = require("../Services/VehiculoCliente.service");
 const InteresService = require("../Services/Interes.service");
 const ImagenesService = require("../Services/Imagenes.service");
+const AdminService = require("../Services/Admin.service");
 
 //Logica de negocio DOMAIN LAYER
 const VehiculoBussines = require("../Domain/Vehiculo.bussines");
@@ -35,6 +38,7 @@ const FacturaBussines = require("../Domain/Factura.bussines");
 const VehiculoClienteBussines = require("../Domain/VehiculoCliente.bussines");
 const InteresBussines = require("../Domain/Interes.bussines");
 const ImagenesBussines = require("../Domain/Imagenes.bussines");
+const AdminBussines = require("../Domain/Admin.bussines");
 
 //Repositorios DATA ACCESS LAYER
 const VehiculoRepository = require("../Data/repositories/Vehiculo.repository");
@@ -43,6 +47,7 @@ const FacturaRepository = require("../Data/repositories/Factura.repository");
 const VehiculoClienteRepository = require("../Data/repositories/VehiculoCliente.repository");
 const ImagenesRepository = require("../Data/repositories/Imagenes.repository");
 const InteresRepository = require("../Data/repositories/Interes.repository");
+const AdminRepository = require("../Data/repositories/Admin.repository");
 
 Container.register({
   app: asClass(Server).singleton(),
@@ -56,7 +61,8 @@ Container.register({
     ClienteRoutes: asFunction(ClienteRoutes).singleton(),
     FacturaRoutes: asFunction(FacturaRoutes).singleton(),
     VehiculoClienteRoutes: asFunction(VehiculoClienteRoutes).singleton(),
-    InteresRoutes: asFunction(InteresRoutes).singleton()
+    InteresRoutes: asFunction(InteresRoutes).singleton(),
+    AdminRoutes: asFunction(AdminRoutes).singleton()
   })
   .register({
     //CONTROLADORES
@@ -64,7 +70,8 @@ Container.register({
     ClienteController: asClass(ClienteController).singleton(),
     FacturaController: asClass(FacturaController).singleton(),
     VehiculoClienteController: asClass(VehiculoClienteController).singleton(),
-    InteresController: asClass(InteresController).singleton()
+    InteresController: asClass(InteresController).singleton(),
+    AdminController: asClass(AdminController).singleton()
   })
   .register({
     //SERVICIOS
@@ -73,7 +80,8 @@ Container.register({
     FacturaService: asClass(FacturaService).singleton(),
     VehiculoClienteService: asClass(VehiculoClienteService).singleton(),
     InteresService: asClass(InteresService).singleton(),
-    ImagenesService: asClass(ImagenesService).singleton()
+    ImagenesService: asClass(ImagenesService).singleton(),
+    AdminService: asClass(AdminService).singleton()
   })
   .register({
     //LOGICA NEGOCIO
@@ -82,7 +90,8 @@ Container.register({
     FacturaBussines: asClass(FacturaBussines).singleton(),
     VehiculoClienteBussines: asClass(VehiculoClienteBussines).singleton(),
     InteresBussines: asClass(InteresBussines).singleton(),
-    ImagenesBussines: asClass(ImagenesBussines).singleton()
+    ImagenesBussines: asClass(ImagenesBussines).singleton(),
+    AdminBussines: asClass(AdminBussines).singleton()
   })
   .register({
     //REPOSITORIO
@@ -91,7 +100,8 @@ Container.register({
     FacturaRepository: asClass(FacturaRepository).singleton(),
     VehiculoClienteRepository: asClass(VehiculoClienteRepository).singleton(),
     InteresRepository: asClass(InteresRepository).singleton(),
-    ImagenesRepository: asClass(ImagenesRepository).singleton()
+    ImagenesRepository: asClass(ImagenesRepository).singleton(),
+    AdminRepository: asClass(AdminRepository).singleton()
   });
 
 module.exports = Container;

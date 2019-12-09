@@ -2,7 +2,6 @@ const express = require("express");
 const dir = require("../public/uploads/dir");
 class Server {
   constructor({ config, router }) {
-    const directorioImagenes = __dirname + "/../../public/uploads";
     this.config = config;
     this.express = express();
     this.express.use(router);
