@@ -7,7 +7,7 @@ class ImagenesRepository extends BaseRepository {
 
   async getImagenesVehiculo(vehiculoId) {
     const imagenes = this.db.Imagenes.findAll({
-      where: { vehiculo: vehiculoId }
+      where: { vehiculoId: vehiculoId }
     });
     return imagenes;
   }

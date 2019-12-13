@@ -9,7 +9,7 @@ class ImagenesBussines extends BaseBussines {
   async createGalery(imagenes, idVehiculo) {
     if (Object.entries(imagenes).length > 0) {
       const galeria = imagenes.map(img => ({
-        vehiculo: idVehiculo,
+        vehiculoId: idVehiculo,
         image: img.filename
       }));
 
@@ -21,8 +21,8 @@ class ImagenesBussines extends BaseBussines {
   }
 
   async deletedByName(name) {
-      const deleted = await this.ImagenesRepository.deletedByName(name)
-      return deleted
+    const deleted = await this.ImagenesRepository.deletedByName(name)
+    return deleted
   }
 }
 

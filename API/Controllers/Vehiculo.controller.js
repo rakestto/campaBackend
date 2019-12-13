@@ -31,7 +31,7 @@ class VehiculoController {
     const vehiculoImagenes = await this.VehiculoService.getVehiculoConImagenes(
       id
     );
-    if (vehiculoImagenes) {
+    if (vehiculoImagenes.vehiculo) {
       return res.send({
         vehiculoImagenes
       });

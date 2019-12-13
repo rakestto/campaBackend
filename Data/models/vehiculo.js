@@ -30,6 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "facturaId",
       sourceKey: "id"
     });
+
+    Vehiculo.hasMany(models.Imagenes, {
+      foreignKey: "vehiculoId",
+      sourceKey: "id"
+    })
   };
   return Vehiculo;
 };
