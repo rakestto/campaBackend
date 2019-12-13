@@ -19,6 +19,11 @@ class ImagenesBussines extends BaseBussines {
       return null;
     }
   }
+
+  async deletedByName(name) {
+      const deleted = await this.ImagenesRepository.deletedByName(name)
+      return deleted
+  }
 }
 
 module.exports = ImagenesBussines;

@@ -27,7 +27,7 @@ module.exports = ({ VehiculoController }) => {
   router.get("/:id", VehiculoController.getVehiculo.bind(VehiculoController));
 
   router.get(
-    "/detalle",
+    "/detalle/:id",
     VehiculoController.getVehiculoConImagenes.bind(VehiculoController)
   );
 

@@ -17,6 +17,11 @@ class ImagenesRepository extends BaseRepository {
     const created = await this.db.Imagenes.bulkCreate(imagen);
     return created;
   }
+
+  async deletedByName(name) {
+    const deleted = await this.db.Imagenes.destroy({ where: { image: name } })
+    return deleted
+  }
 }
 
 module.exports = ImagenesRepository;

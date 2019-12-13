@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       ano: DataTypes.INTEGER,
       ancho: DataTypes.DOUBLE,
       alto: DataTypes.DOUBLE,
+      largo: DataTypes.DOUBLE,
       tipoeje: DataTypes.STRING,
       tiporueda: DataTypes.STRING,
       tipofreno: DataTypes.STRING,
@@ -18,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Vehiculo.associate = function(models) {
+  Vehiculo.associate = function (models) {
     //CLIENTE - VEHICULO => INTERÉS
     Vehiculo.belongsToMany(models.Cliente, {
       through: "Interes",

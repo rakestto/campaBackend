@@ -14,6 +14,7 @@ const FacturaRoutes = require("./Routes/Factura.routes");
 const VehiculoClienteRoutes = require("./Routes/VehiculoClientes.routes");
 const InteresRoutes = require("./Routes/Interes.routes");
 const AdminRoutes = require("./Routes/Admin.routes");
+const ImagenesRoutes = require("./Routes/Imagenes.routes");
 
 //Controladores
 const VehiculoController = require("./Controllers/Vehiculo.controller");
@@ -22,6 +23,8 @@ const FacturaController = require("./Controllers/Factura.controller");
 const VehiculoClienteController = require("./Controllers/VehiculoCliente.controller");
 const InteresController = require("./Controllers/Interes.controller");
 const AdminController = require("./Controllers/Admin.controller");
+const ImagenesController = require("./Controllers/Imagenes.controller");
+
 //Servicios SERVICES LAYER
 const VehiculoService = require("../Services/Vehiculo.service");
 const ClienteService = require("../Services/Cliente.service");
@@ -62,7 +65,8 @@ Container.register({
     FacturaRoutes: asFunction(FacturaRoutes).singleton(),
     VehiculoClienteRoutes: asFunction(VehiculoClienteRoutes).singleton(),
     InteresRoutes: asFunction(InteresRoutes).singleton(),
-    AdminRoutes: asFunction(AdminRoutes).singleton()
+    AdminRoutes: asFunction(AdminRoutes).singleton(),
+    ImagenesRoutes: asFunction(ImagenesRoutes).singleton()
   })
   .register({
     //CONTROLADORES
@@ -71,7 +75,8 @@ Container.register({
     FacturaController: asClass(FacturaController).singleton(),
     VehiculoClienteController: asClass(VehiculoClienteController).singleton(),
     InteresController: asClass(InteresController).singleton(),
-    AdminController: asClass(AdminController).singleton()
+    AdminController: asClass(AdminController).singleton(),
+    ImagenesController: asClass(ImagenesController).singleton()
   })
   .register({
     //SERVICIOS

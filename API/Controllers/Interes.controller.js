@@ -56,6 +56,8 @@ class InteresController {
       deletedInteres
     });
   }
+
+
 }
 
 module.exports = InteresController;

@@ -40,7 +40,7 @@ class FacturaController {
   async deleteFactura(req, res) {
     const { id } = req.params;
     const deletedFactura = await this.FacturaService.delete(id);
-    deletedFactura ? res.send({ deletedFactura }) : res.sendStatus(404);
+    deletedFactura ? res.send(deletedFactura) : res.sendStatus(404);
   }
 }
 

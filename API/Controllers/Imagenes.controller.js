@@ -1,10 +1,10 @@
-class ImagenController {
-  constructor({ ImagenService }) {
-    this.ImagenService = ImagenService;
+class ImagenesController {
+  constructor({ ImagenesService }) {
+    this.ImagenesService = ImagenesService;
   }
 
   async getImagenes(req, res) {
-    const Imagenes = await this.ImagenService.getAll();
+    const Imagenes = await this.ImagenesService.getAll();
     return res.send({
       Imagenes
     });
@@ -12,13 +12,13 @@ class ImagenController {
 
   async getImagenesId(req, res) {
     const { vehiculo } = req.params;
-    const Imagenes = await this.ImagenService.getAll(vehiculo);
+    const Imagenes = await this.ImagenesService.getAll(vehiculo);
     return Imagenes ? res.send({ Imagenes }) : res.sendStatus(404);
   }
 
   async createImagen(req, res) {
     const { body } = req;
-    const ImagenCreada = await this.ImagenService.create(body);
+    const ImagenCreada = await this.ImagenesService.create(body);
     if (!ImagenCreada) {
       return res.sendStatus(404);
     }
@@ -30,7 +30,7 @@ class ImagenController {
   async updateImagen(req, res) {
     const { body } = req;
     const { id } = req.params;
-    const updatedImagen = await this.ImagenService.update(id, body);
+    const updatedImagen = await this.ImagenesService.update(id, body);
     if (!updatedImagen) {
       return res.sendStatus(404);
     }
@@ -41,7 +41,7 @@ class ImagenController {
 
   async deleteImagen(req, res) {
     const { id } = req.params;
-    const deletedImagen = await this.ImagenService.delete(id);
+    const deletedImagen = await this.ImagenesService.delete(id);
     if (!deletedImagen) {
       return res.sendStatus(404);
     }
@@ -49,6 +49,18 @@ class ImagenController {
       deletedImagen
     });
   }
+
+  async deleteImagenByName(req, res) {
+    const { name } = req.params
+    const deletedImagen = await this.ImagenesService.deleteByName(name)
+    if (deletedImagen == 0) {
+      return res.sendStatus(404);
+    }
+    return res.send({
+      deletedImagen: true
+    });
+  }
 }
 
-module.exports = ImagenController;
+
+module.exports = ImagenesController;

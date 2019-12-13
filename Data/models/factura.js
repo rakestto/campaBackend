@@ -4,13 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     'Factura',
     {
       cliente: DataTypes.STRING,
-      vehiculo: DataTypes.INTEGER,
       precio: DataTypes.INTEGER,
       fecha: DataTypes.DATE
     },
     {}
   );
-  Factura.associate = function(models) {
+  Factura.associate = function (models) {
     //FACTURA - CLIENTE
     Factura.belongsTo(models.Cliente, {
       foreignKey: 'clienteId',

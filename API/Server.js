@@ -5,7 +5,7 @@ class Server {
     this.config = config;
     this.express = express();
     this.express.use(router);
-    this.express.use("/api/imagenes", express.static(dir));
+    this.express.use("/api/pictures", express.static(dir));
   }
 
   start() {

@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  Cliente.associate = function(models) {
+  Cliente.associate = function (models) {
     //CLIENTE - VEHICULO => INTERÉS
     Cliente.belongsToMany(models.Vehiculo, {
       through: 'Interes',
       foreignKey: 'clienteId'
     });
-    //FACTURA - CLIENTE
+    //CLIENTE - FACTURA 
     Cliente.hasMany(models.Factura, {
       foreignKey: 'clienteId',
       sourceKey: 'id'
