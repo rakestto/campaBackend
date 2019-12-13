@@ -37,6 +37,8 @@ module.exports = ({ VehiculoController }) => {
     VehiculoController.createVehiculo.bind(VehiculoController)
   );
 
+  router.post("/updateGalery/:id", upload, VehiculoController.galeryUpdate.bind(VehiculoController))
+
   router.put(
     "/:id",
     VehiculoController.updateVehiculo.bind(VehiculoController)

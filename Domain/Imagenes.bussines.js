@@ -20,6 +20,11 @@ class ImagenesBussines extends BaseBussines {
     }
   }
 
+  async createNew(idVehiculo, imagen) {
+    const createdImage = await this.ImagenesRepository.createNew(idVehiculo, imagen)
+    return createdImage
+  }
+
   async deletedByName(name) {
     const deleted = await this.ImagenesRepository.deletedByName(name)
     return deleted

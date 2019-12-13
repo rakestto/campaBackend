@@ -22,6 +22,15 @@ class ImagenesRepository extends BaseRepository {
     const deleted = await this.db.Imagenes.destroy({ where: { image: name } })
     return deleted
   }
+
+  async createNew(idVehiculo, imagen) {
+    const nuevaImagen = {
+      vehiculoId: idVehiculo,
+      image: imagen
+    }
+    const created = await this.db.Imagenes.create(nuevaImagen)
+    return created
+  }
 }
 
 module.exports = ImagenesRepository;

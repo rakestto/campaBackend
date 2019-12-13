@@ -15,6 +15,7 @@ module.exports = ({ ImagenesController }) => {
         "/deleteName/:name",
         ImagenesController.deleteImagenByName.bind(ImagenesController)
     );
+    router.post('actualizar/:imagenes')
     // router.delete("/vehiculogalery/:id", ImagenesController.deleteGaleryByVehiculoId.bind(ImagenesController))
     return router;
 };
