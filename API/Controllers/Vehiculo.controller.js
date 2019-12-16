@@ -82,8 +82,8 @@ class VehiculoController {
 
     async galeryUpdate(req, res) {
         const idVehiculo = req.params.id
-        const imagen = req.files[0].filename
-        const imagenCreada = await this.ImagenesService.createNew(idVehiculo, imagen)
+        const imagen = req.files
+        const imagenCreada = await this.ImagenesService.createGalery(imagen, idVehiculo)
         return imagenCreada ? res.send({ imagenCreada }) : res.sendStatus(404)
     }
 

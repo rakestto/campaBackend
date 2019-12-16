@@ -8,9 +8,9 @@ class ImagenesBussines extends BaseBussines {
 
   async createGalery(imagenes, idVehiculo) {
     if (Object.entries(imagenes).length > 0) {
-      const galeria = imagenes.map(img => ({
+      const galeria = Object.keys(imagenes).map(img => ({
         vehiculoId: idVehiculo,
-        image: img.filename
+        image: imagenes[img].filename
       }));
 
       const galery = await this.ImagenesRepository.createGalery(galeria);

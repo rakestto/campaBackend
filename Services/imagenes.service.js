@@ -16,7 +16,7 @@ class ImagenesService extends BaseService {
     return createdImage
   }
 
-  async createGalery(idVehiculo, imagenes) {
+  async createGalery(imagenes, idVehiculo) {
     const createdGalery = await this.ImagenesBussines.createGalery(imagenes, idVehiculo)
     return createdGalery
   }
