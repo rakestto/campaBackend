@@ -10,6 +10,12 @@ class ClienteController {
     });
   }
 
+  async getClienteEmail(req, res) {
+    const { email } = req.query
+    const cliente = await this.clienteService.getClienteEmail(email)
+    return res.send({ cliente })
+  }
+
   async getCliente(req, res) {
     const { id } = req.params;
     const clientes = await this.clienteService.get(id);

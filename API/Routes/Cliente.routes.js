@@ -4,6 +4,7 @@ module.exports = ({ ClienteController }) => {
   const router = Router();
 
   router.get('/', ClienteController.getClientes.bind(ClienteController));
+  router.get('/email', ClienteController.getClienteEmail.bind(ClienteController));
   router.get('/:id', ClienteController.getCliente.bind(ClienteController));
   router.post('/', ClienteController.createCliente.bind(ClienteController));
   router.put('/:id', ClienteController.updateCliente.bind(ClienteController));

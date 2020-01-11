@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       tipoeje: DataTypes.STRING,
       tiporueda: DataTypes.STRING,
       tipofreno: DataTypes.STRING,
-      imagen: DataTypes.STRING
+      imagen: DataTypes.STRING,
+      descripcion: DataTypes.STRING
     },
     {}
   );
