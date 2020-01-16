@@ -8,8 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      cliente: {
-        type: Sequelize.STRING
+      clienteEmail: {
+        type: Sequelize.STRING,
+        foreignKey: true
       },
       vehiculo: {
         type: Sequelize.INTEGER

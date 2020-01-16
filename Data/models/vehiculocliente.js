@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  VehiculoCliente.associate = function(models) {
+  VehiculoCliente.associate = function (models) {
     //CLIENTE - VEHICULOCLIENTE
-    VehiculoCliente.belongsTo(models.Cliente, {
-      foreignKey: 'clienteId',
-      source: 'id'
-    });
+    // VehiculoCliente.belongsTo(models.Cliente, {
+    //   foreignKey: 'clienteId',
+    //   source: 'id'
+    // });
   };
   return VehiculoCliente;
 };

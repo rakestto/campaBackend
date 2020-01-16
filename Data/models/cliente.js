@@ -1,31 +1,15 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Cliente = sequelize.define(
-    'Cliente',
-    {
-      email: DataTypes.STRING,
-      nombre: DataTypes.STRING,
-      apellidos: DataTypes.STRING,
-      telefono: DataTypes.INTEGER
-    },
-    {}
-  );
-  Cliente.associate = function (models) {
-    //CLIENTE - VEHICULO => INTERÉS
-    Cliente.belongsToMany(models.Vehiculo, {
-      through: 'Interes',
-      foreignKey: 'clienteId'
-    });
-    //CLIENTE - FACTURA 
-    Cliente.hasMany(models.Factura, {
-      foreignKey: 'clienteId',
-      sourceKey: 'id'
-    });
-    //CLIENTE - VEHICULOCLIENTE
-    Cliente.hasMany(models.VehiculoCliente, {
-      foreignKey: 'clienteId',
-      sourceKey: 'id'
-    });
+  const cliente = sequelize.define('cliente', {
+    email: DataTypes.STRING,
+    telefono: DataTypes.INTEGER,
+    nombre: DataTypes.STRING,
+    apellidos: DataTypes.STRING
+  }, {});
+  cliente.associate = function (models) {
+    // associations can be defined here
   };
-  return Cliente;
+  return cliente;
 };
+
+
