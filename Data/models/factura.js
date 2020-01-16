@@ -10,13 +10,13 @@ module.exports = (sequelize, DataTypes) => {
   );
   Factura.associate = function (models) {
     // FACTURA - CLIENTE
-    // Factura.belongsTo(models.Cliente, {
-    //   foreignKey: 'clienteEmail',
-    //   sourceKey: 'email'
-    // });
+    Factura.belongsTo(models.Cliente, {
+      foreignKey: 'emailCliente',
+      sourceKey: 'email'
+    });
     //FACTURA - VEHICULO
     Factura.hasMany(models.Vehiculo, {
-      foreignKey: 'vehiculoId',
+      foreignKey: 'facturaId',
       sourceKey: 'id'
     });
   };

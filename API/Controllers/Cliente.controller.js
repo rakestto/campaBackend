@@ -17,8 +17,8 @@ class ClienteController {
   }
 
   async getCliente(req, res) {
-    const { id } = req.params;
-    const clientes = await this.clienteService.get(id);
+    const { email } = req.params;
+    const clientes = await this.clienteService.get(email);
     return clientes ? res.send({ clientes }) : res.sendStatus(404);
   }
 
@@ -35,8 +35,8 @@ class ClienteController {
 
   async updateCliente(req, res) {
     const { body } = req;
-    const { id } = req.params;
-    const updatedcliente = await this.clienteService.update(id, body);
+    const { email } = req.params;
+    const updatedcliente = await this.clienteService.update(email, body);
     if (!updatedcliente) {
       return res.sendStatus(404);
     }
@@ -46,8 +46,8 @@ class ClienteController {
   }
 
   async deleteCliente(req, res) {
-    const { id } = req.params;
-    const deletedcliente = await this.clienteService.delete(id);
+    const { email } = req.params;
+    const deletedcliente = await this.clienteService.delete(email);
     if (!deletedcliente) {
       return res.sendStatus(404);
     }

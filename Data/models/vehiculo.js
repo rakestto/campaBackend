@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     //FACTURA - VEHICULO
     Vehiculo.belongsTo(models.Factura, {
       foreignKey: "facturaId",
-      sourceKey: "id"
+      targetKey: "id"
     });
 
     Vehiculo.hasMany(models.Imagenes, {
