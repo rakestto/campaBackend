@@ -8,18 +8,18 @@ module.exports = (sequelize, DataTypes) => {
     },
     nombre: DataTypes.STRING,
     telefono: DataTypes.STRING,
-    apellidos: DataTypes.STRING
+    apellidos: DataTypes.STRING,
   }, {});
   Cliente.associate = function (models) {
     // associations can be defined here
     Cliente.belongsToMany(models.Vehiculo, {
       through: 'Interes',
-      foreignKey: 'emailCliente'
+      foreignKey: 'email'
     });
     //CLIENTE - FACTURA 
     Cliente.hasMany(models.Factura, {
-      foreignKey: 'emailCliente',
-      targetKey: 'email'
+      foreignKey: 'email',
+      sourceKey: 'email'
     });
   };
   return Cliente;

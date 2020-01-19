@@ -49,8 +49,8 @@ class InteresController {
   }
 
   async deleteInteres(req, res) {
-    const { id } = req.params;
-    const deletedInteres = await this.InteresService.delete(id);
+    const { vehiculoId } = req.params;
+    const deletedInteres = await this.InteresService.deleteConVehiculo(vehiculoId);
     if (!deletedInteres) return null;
     return res.send({
       deletedInteres

@@ -8,12 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      clienteEmail: {
+      email: {
+        foreignKey: true,
         type: Sequelize.STRING,
-        foreignKey: true
+        references: {
+          model: Cliente,
+          key: email
+        }
       },
-      vehiculo: {
-        type: Sequelize.INTEGER
+      emitida: {
+        type: Sequelize.BOOLEAN
       },
       precio: {
         type: Sequelize.INTEGER

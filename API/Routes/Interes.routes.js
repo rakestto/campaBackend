@@ -8,7 +8,7 @@ module.exports = ({ InteresController }) => {
   router.post('/', InteresController.createInteres.bind(InteresController));
   router.put('/:id', InteresController.updateInteres.bind(InteresController));
   router.delete(
-    '/:id',
+    '/:vehiculoId',
     InteresController.deleteInteres.bind(InteresController)
   );
   return router;
